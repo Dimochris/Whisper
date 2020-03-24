@@ -16,27 +16,27 @@ class ErrorsPage extends Component {
             {code: 7, name:"name7", description: "fdfdfd fdfdf fdfd", type:"noerror", dateTime:'1/1/2020'},
             {code: 8, name:"name8", description: "fdfdfd fdfdf fdfd", type:"noerror", dateTime:'1/1/2020'},
             {code: 9, name:"name9", description: "fdfdfd fdfdf fdfd", type:"noerror", dateTime:'1/1/2020'}
-    ]
+    ],
+    dumyCpunter: 0
   };
 
   deleteAllHandler = () => {
-    console.log("Delete All Errors!");
+    console.log("deleteAllHandler function");
     const oldErrorList = this.state.errorList;
     console.log(oldErrorList);
     const newErrorList = [];
     this.setState({errorList: newErrorList});
   }
 
-  deleteErrorHandler = (id) => {
-    console.log("deleteErrorHandler" + id);
-    const oldErrorList = this.state.errorList;
-    console.log(oldErrorList);
-    console.log(id);
-
+  deleteErrorHandler = (deleteId) => {
+    console.log("deleteErrorHandler function " + deleteId);
+    const currentErrorList = [...this.state.errorList]; // για να το κάνω με emutable τρόπο
+    currentErrorList.splice(deleteId,1);
+    this.setState({errorList : currentErrorList});
   }
 
-  editErrorHandler = (id) => {
-    console.log("editErrorHandler" + id);
+  editErrorHandler = (editId) => {
+    console.log("editErrorHandler function " + editId);
   }
 
   render() {

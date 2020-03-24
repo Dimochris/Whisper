@@ -49,28 +49,35 @@ class ServerList extends Component {
       }
     ]
   };
+
   addServerHandler = () => {
     console.log("addServerHandler");
   };
-  editServerHandler = (serverId) => {
+
+  editServerHandler = serverId => {
     console.log(serverId);
   };
-  deleteServerHandler = (serverId) => {
-    console.log(serverId);
+
+  deleteServerHandler = serverId => {
+    console.log("deleteServerHandler " + serverId);
+    const currentServerList = [...this.state.servers];
+    currentServerList.splice(serverId, 1);
+    this.setState({ servers: currentServerList });
   };
+
   render() {
     return (
       <div>
         <h1>Server List</h1>
         <button onClick={this.addServerHandler}>Add Server</button>
-        {this.state.servers.map((server, serverkey) => 
+        {this.state.servers.map((server, serverkey) => (
           <Server
             key={serverkey}
             server={server}
             deleteServer={() => this.deleteServerHandler(serverkey)}
             editServer={() => this.editServerHandler(serverkey)}
           />
-        )}
+        ))}
       </div>
     );
   }
