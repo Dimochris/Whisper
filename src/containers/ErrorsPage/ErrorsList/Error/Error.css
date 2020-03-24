@@ -1,0 +1,18 @@
+.Error1 {
+color: red;
+}
+.Error2 {
+color: orange;
+}
+.Error3 {
+color: yellow;
+}
+.Error4 {
+color: yellowgreen;
+}
+.NoError {
+    color: green;
+}
+.Default {
+    color: black;
+}
