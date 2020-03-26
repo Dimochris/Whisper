@@ -1,8 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+import AuthProvider from './contexts/AuthProvider';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import './index.css';
+
+const Root = (
+    <AuthProvider>
+        <App />
+    </AuthProvider>
+)
+
+ReactDOM.render(Root, document.getElementById('root'));
+
 registerServiceWorker();
