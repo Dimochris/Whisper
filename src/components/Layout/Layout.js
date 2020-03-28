@@ -6,7 +6,7 @@ import Servers from "../../containers/ServerList/ServerList";
 import PendingData from "../../containers/PendingData/PendingData";
 import Modal from "../UI/Modal/Modal";
 import DeleteItem from "../UI/DeleteItem/DeleteItem";
-import Navbar from  './Navbar';
+import Toolbar from '../Navigation/Toolbar/Toolbar';
 
 const layout = props => {
   const [showModal, setshowModal] = useState(false);
@@ -19,7 +19,7 @@ const layout = props => {
 
   return (
     <Auxiliary>
-      <Navbar/>
+      <Toolbar/>
       <ErrorsPage />
       <Modal show={showModal} modalClosed={() => modalClosedHandler()}>
         <DeleteItem type="server" id={1} />
