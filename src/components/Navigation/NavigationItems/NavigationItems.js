@@ -1,16 +1,14 @@
-import React from 'react';
-import NavigationItem from './NavigationItem/NavigationItem';
-import classes from './navigationItems.css';
+import React from "react";
+import NavigationItem from "./NavigationItem/NavigationItem";
+import classes from "./navigationItems.css";
 
-const navigationItems = (props) => {
-    return (
-        <ul className={classes.NavigationItem}>
-            <NavigationItem>Error List</NavigationItem>
-            <NavigationItem>Admin Page</NavigationItem>
-            <NavigationItem>Server List</NavigationItem>
-            <NavigationItem>Pending Data List</NavigationItem>
-        </ul>
-    );
-};
+const navigationItems = props => (
+  <ul className={classes.NavigationItems}>
+    <NavigationItem link="/" active>Error List</NavigationItem>
+    <NavigationItem link="/" >Admin Page</NavigationItem>
+    <NavigationItem link="/" >Server List</NavigationItem>
+    <NavigationItem link="/" >Pending Data List</NavigationItem>
+  </ul>
+);
 
 export default navigationItems;

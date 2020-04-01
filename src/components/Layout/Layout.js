@@ -6,20 +6,32 @@ import Servers from "../../containers/ServerList/ServerList";
 import PendingData from "../../containers/PendingData/PendingData";
 import Modal from "../UI/Modal/Modal";
 import DeleteItem from "../UI/DeleteItem/DeleteItem";
-import Toolbar from '../Navigation/Toolbar/Toolbar';
+import Toolbar from "../Navigation/Toolbar/Toolbar";
+import SideDrawer from "../Navigation/SideDrawer/SideDrawer";
 
 const layout = props => {
   const [showModal, setshowModal] = useState(false);
+  const [showSideDrawer, setshowSideDrawer] = useState(false);
 
   const modalClosedHandler = showModal => {
     console.log("modalClosedHandler");
     const currentshowModal = showModal;
     setshowModal(!currentshowModal);
+  }; 
+
+  const showSideDrawerHandler = () => {
+    console.log(showSideDrawer);
+    const currentshowSideDrawer = showSideDrawer;
+    setshowSideDrawer(!currentshowSideDrawer);
   };
 
   return (
     <Auxiliary>
-      <Toolbar/>
+      <Toolbar />
+      <SideDrawer
+        open={showSideDrawer}
+        closed={() => showSideDrawerHandler()}
+      />
       <ErrorsPage />
       <Modal show={showModal} modalClosed={() => modalClosedHandler()}>
         <DeleteItem type="server" id={1} />
