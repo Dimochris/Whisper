@@ -10,22 +10,23 @@ import DeleteItem from "../UI/DeleteItem/DeleteItem";
 import Toolbar from "../Navigation/Toolbar/Toolbar";
 import SideDrawer from "../Navigation/SideDrawer/SideDrawer";
 
-class Layout extends Component {
-  state = {
-    showSideDrawer: false
-  };
+const Layout = (props) =>  {
+  
+  const [showSideDrawer, setshowSideDrawer] = useState(false);
 
   sideDrawerClosedHandler = () => {
+    
     this.setState({ showSideDrawer: false });
   };
 
   sideDrawerToggleHandler = () => {
+
     this.setState(prevState => {
       return { showSideDrawer: !prevState.showSideDrawer };
     });
   };
 
-  render() {
+
     return (
       <Auxiliary>
         <Toolbar drawerToggleClicked={this.sideDrawerToggleHandler} />
@@ -41,7 +42,7 @@ class Layout extends Component {
         <PendingData />
       </Auxiliary>
     );
-  }
+  
 }
 
 export default Layout;
