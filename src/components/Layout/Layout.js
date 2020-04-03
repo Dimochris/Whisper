@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, Component } from "react";
+
 import Auxiliary from "../../hoc/Auxiliary";
 import ErrorsPage from "../../containers/ErrorsPage/ErrorsPage";
 import AdminPage from "../../containers/AdminPage/AdminPage";
@@ -9,13 +10,49 @@ import DeleteItem from "../UI/DeleteItem/DeleteItem";
 import Toolbar from "../Navigation/Toolbar/Toolbar";
 import SideDrawer from "../Navigation/SideDrawer/SideDrawer";
 
-const layout = props => {
-  const [showModal, setshowModal] = useState(true);
+class Layout extends Component {
+  state = {
+    showSideDrawer: false
+  };
+
+  sideDrawerClosedHandler = () => {
+    this.setState({ showSideDrawer: false });
+  };
+
+  sideDrawerToggleHandler = () => {
+    this.setState(prevState => {
+      return { showSideDrawer: !prevState.showSideDrawer };
+    });
+  };
+
+  render() {
+    return (
+      <Auxiliary>
+        <Toolbar drawerToggleClicked={this.sideDrawerToggleHandler} />
+        <SideDrawer
+          open={this.state.showSideDrawer}
+          closed={this.sideDrawerClosedHandler}
+        />
+        <ErrorsPage />
+        
+        
+        <AdminPage />
+        <Servers />
+        <PendingData />
+      </Auxiliary>
+    );
+  }
+}
+
+export default Layout;
+
+/*
+const Layout = props => {
+  const [showModal, setshowModal] = useState(false);
   const [showSideDrawer, setshowSideDrawer] = useState(false);
 
   // Για να κάνει την ενέργεια του οκ του Modal - Delete
-  const modalOkHandler = (action,id) => {
-    
+  const modalOkHandler = (action, id) => {
     console.log("action : ");
     console.log(action);
     console.log("id : ");
@@ -34,22 +71,33 @@ const layout = props => {
   // Για να κλείνει το modal :
   const modalClosedHandler = showModal => {
     // console.log('modalClosedHandler clicked: {0} ' , showModal);
-    const currentshowModal = showModal;
+    // const currentshowModal = showModal;
     setshowModal(false);
   };
 
   // Για να κλείνει το sideDrawer:
   const showSideDrawerHandler = () => {
     console.log("showSideDrawerHandler clicked: " + showSideDrawer);
-    const currentshowSideDrawer = showSideDrawer;
-    setshowSideDrawer(false);
+    // const currentshowSideDrawer = showSideDrawer;
+    setshowSideDrawer(true);
   };
-
+  /*
+  const closeSideDrawerHandler = () => {
+    console.log("closeSideDrawerHandler clicked");
+  };
+  */
+/*
+  const sideDrawerToggleHandler = () => {
+    console.log(sideDrawerToggleHandler);
+    const currentshowSideDrawer = showSideDrawer;
+    setshowSideDrawer(!currentshowSideDrawer);
+  };
+/*
   return (
     <Auxiliary>
-      <Toolbar />
+      <Toolbar drawerToggleClicked={() => sideDrawerToggleHandler()} />
       <SideDrawer
-        open={showSideDrawer}
+        open={true}
         closed={() => showSideDrawerHandler()}
       />
       <ErrorsPage />
@@ -58,7 +106,7 @@ const layout = props => {
           type="server"
           id={1}
           modalClosed={() => modalClosedHandler()}
-          modalOk = {()=> modalOkHandler("edit",1)}
+          modalOk={() => modalOkHandler("edit", 1)}
         />
       </Modal>
       <AdminPage />
@@ -68,4 +116,5 @@ const layout = props => {
   );
 };
 
-export default layout;
+export default Layout;
+*/
