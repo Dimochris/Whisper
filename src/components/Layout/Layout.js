@@ -1,12 +1,13 @@
-import React, { useState, Component } from "react";
+/*
+import React, { useState } from "react";
 
 import Auxiliary from "../../hoc/Auxiliary";
 import ErrorsPage from "../../containers/ErrorsPage/ErrorsPage";
 import AdminPage from "../../containers/AdminPage/AdminPage";
 import Servers from "../../containers/ServerList/ServerList";
 import PendingData from "../../containers/PendingData/PendingData";
-import Modal from "../UI/Modal/Modal";
-import DeleteItem from "../UI/DeleteItem/DeleteItem";
+// import Modal from "../UI/Modal/Modal";
+// import DeleteItem from "../UI/DeleteItem/DeleteItem";
 import Toolbar from "../Navigation/Toolbar/Toolbar";
 import SideDrawer from "../Navigation/SideDrawer/SideDrawer";
 
@@ -14,29 +15,29 @@ const Layout = (props) =>  {
   
   const [showSideDrawer, setshowSideDrawer] = useState(false);
 
-  sideDrawerClosedHandler = () => {
-    
-    this.setState({ showSideDrawer: false });
+  const sideDrawerClosedHandler = () => {
+    setshowSideDrawer (false);
   };
 
-  sideDrawerToggleHandler = () => {
-
-    this.setState(prevState => {
+  const sideDrawerToggleHandler = () => {
+    const currentShowSideDrawer = showSideDrawer;
+    setshowSideDrawer(!currentShowSideDrawer);
+    // αν είναι class
+    /*this.setState(prevState => {
       return { showSideDrawer: !prevState.showSideDrawer };
     });
+    
   };
 
-
+/*
     return (
       <Auxiliary>
-        <Toolbar drawerToggleClicked={this.sideDrawerToggleHandler} />
+        <Toolbar drawerToggleClicked={() => sideDrawerToggleHandler()} />
         <SideDrawer
-          open={this.state.showSideDrawer}
-          closed={this.sideDrawerClosedHandler}
+          open={ () => showSideDrawer()}
+          closed={() =>sideDrawerClosedHandler()}
         />
         <ErrorsPage />
-        
-        
         <AdminPage />
         <Servers />
         <PendingData />
@@ -46,7 +47,52 @@ const Layout = (props) =>  {
 }
 
 export default Layout;
+*/
 
+
+/********************************************* */
+import React, { useState } from 'react';
+
+import Auxiliary from '../../hoc/Auxiliary';
+import Toolbar from '../Navigation/Toolbar/Toolbar';
+import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
+import ErrorsPage from "../../containers/ErrorsPage/ErrorsPage";
+import AdminPage from "../../containers/AdminPage/AdminPage";
+import Servers from "../../containers/ServerList/ServerList";
+import PendingData from "../../containers/PendingData/PendingData";
+
+
+const Layout = () => {
+
+  const [showSideDrawer, setShowSideDrawer] = useState(false);
+
+  const sideDrawerClosedHandler = () => {
+    setShowSideDrawer(false);
+  }
+
+  const sideDrawerToggleHandler = () => {
+    const currentShowSideDrawer = showSideDrawer;
+    setShowSideDrawer(!currentShowSideDrawer);
+  }
+
+  return (
+    <Auxiliary>
+      <Toolbar drawerToggleClicked={() => sideDrawerToggleHandler()} />
+      <SideDrawer
+        open={showSideDrawer}
+        closed={() => sideDrawerClosedHandler()} />
+      <ErrorsPage />
+      <AdminPage />
+      <Servers />
+      <PendingData />
+    
+    </Auxiliary>
+  )
+}
+
+
+export default Layout;
+/********************************************* */
 /*
 const Layout = props => {
   const [showModal, setshowModal] = useState(false);
