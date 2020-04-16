@@ -1,10 +1,14 @@
-import React from 'react';
+import React, {Component} from 'react';
+import Auxiliary from '../../../hoc/Auxiliary';
+import Button from '../../../components/UI/Button/Button';
 
-const ServerAdd = (props) => {
-    return (
-        <div>
+class ServerAdd extends Component {
+    render() {
+      return (
+        <Auxiliary>
+                  <Button btnType="Danger" clicked={this.props.cancelAddServer}>Cancel</Button>
             <h1>New Server</h1>
-            <form>
+            <form >
                 <label>Server Name:</label>
                 <input type='text' name='ServerName' /><br /><br />
 
@@ -33,17 +37,13 @@ const ServerAdd = (props) => {
                 <input type='radio' id='other' name='serverRole' value='other' />
                 <label htmlFor='other'>Other</label><br />
 
-                <button onClick={props.addServer({
-                    serverCode: 7,
-                    serverName: "newServer",
-                    serverPingStatus: true,
-                    serverCurlStatus: false,
-                    serverRole: 1
-                })}>Save</button>
-                <button onClick={props.cancelAddServer}>Cancel</button>
+                <Button btnType="Success" clicked={this.props.addServer}>Save</Button>
+                <Button btnType="Danger" clicked={this.props.cancelAddServer}>Cancel</Button>
             </form>
-        </div>
-    );
+        </Auxiliary>
+    );  
+    }
+    
 };
 
 export default ServerAdd;
