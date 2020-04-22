@@ -6,9 +6,10 @@ class ServerAdd extends Component {
     render() {
       return (
         <Auxiliary>
-                  <Button btnType="Danger" clicked={this.props.cancelAddServer}>Cancel</Button>
             <h1>New Server</h1>
-            <form >
+            <form>
+                <label>Server Code:</label>
+                <input type='text' name='ServerCode' /><br /><br />
                 <label>Server Name:</label>
                 <input type='text' name='ServerName' /><br /><br />
 
@@ -23,7 +24,6 @@ class ServerAdd extends Component {
                 <input type='radio' id='geetha' name='serverBelogsTo' value='geetha' />
                 <label htmlFor='geetha'>ΓΕΕΘΑ</label>
                 <br /><br />
-
 
                 {/* xxx.xxx.xxx.xxx */}
                 <label>Ip address of Server: </label>

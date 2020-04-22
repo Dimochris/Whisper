@@ -3,7 +3,7 @@ import classes from "./Error.css";
 
 const error = props => {
   let errorClasses = null;
-  switch (props.err.type) {
+  switch (props.err.errorType) {
     case "1":
       errorClasses=classes.Error1;
       break;
@@ -23,12 +23,12 @@ const error = props => {
 
   return (
     <div className={errorClasses}>
-      Error Code: {props.err.code}
-      Error Name: {props.err.name}
-      Error Description: {props.err.description}
-      Error Type: {props.err.type}
-      Error DateTime: {props.err.dateTime}
-      <button onClick={props.editError}>Edit</button>
+      Error ID: {props.err.errorId}
+      Error Code: {props.err.errorCode}
+      Error Name: {props.err.errorName}
+      Error Description: {props.err.errorDescription}
+      Error Type: {props.err.errorType}
+      Error DateTime: {props.err.errorDateTime}
       <button onClick={props.deleteError}>Delete</button>
     </div>
   );

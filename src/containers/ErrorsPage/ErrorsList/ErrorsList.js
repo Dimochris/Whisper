@@ -10,8 +10,8 @@ const errorslist = props => {
         <Error 
           key={index} 
           err={er} 
-          deleteError={() => props.deleteError(index)} 
-          editError={() => props.editError(index)}/>
+          deleteError={() => props.deleteError(index)}
+        />
       )     
       )}
     </div>
